@@ -1,0 +1,35 @@
+id,City,1,2,3,4,5,6
+1,New York,5,1,4,3,5,5
+2,San Francisco,5,5,4,4,5,5
+3,Jersey City,2,,2,,,
+4,Boston,4,,3,,,5
+5,Miami,4,5,3,4,,
+6,Chicago,3,,5,,,
+7,Newark,,,,,1,
+8,Philadelphia,,1,,2,,
+9,Berkeley,,,,,2,
+10,Washington,,,,1,,
+11,San Mateo,,5,,4,,
+12,Los Angeles,4,,,,4,5
+13,Seattle,4,,,,,
+14,Minneapolis,2,5,2,4,,
+15,Baltimore,2,,2,,5,
+16,Oakland,1,,1,,,
+17,New Haven,,,,,1,1
+18,Sunnyvale,1,,1,,,
+19,Santa Clara,1,,1,,,
+20,Buffalo,,,,,1,
+21,Milwaukee,2,,,,,
+22,Honolulu,,5,,,,
+23,San Jose,,,5,,,
+24,Hollywood,,5,,4,,
+25,Pittsburgh,,,,,1,1
+26,Sacramento,,,,,,5
+27,Cleveland,,,,,4,5
+28,Detroit,,,,,,1
+29,Springfield,,,,,1,1
+30,Portland,,4,4,3,,
+31,Las Vegas,5,4,5,4,,
+32,Tempe,,,,,1,1
+33,Denver,4,3,4,3,,
+34,Boulder,,4,2,4,,

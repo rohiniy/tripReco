@@ -12,4 +12,24 @@ from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
 from sklearn.naive_bayes import GaussianNB
 from sklearn.svm import SVC
 
-print('pandas: {}'.format(pandas.__version__))
+# get places data set
+placesUrl = "./places.csv"
+placesColumns = ['City_id', 'City', 'Type']
+placesDataset = pandas.read_csv(placesUrl, names=placesColumns)
+
+# get user rating for place
+userRatingsUrl = "./user_place_rating.csv"
+userRatingsColumns = ['User_id', 'City_id', 'Rating']
+userRatingsDataset = pandas.read_csv(userRatingsUrl, names=userRatingsColumns)
+
+# merging places and user rating
+userRatingsDataset = pandas.merge(userRatingsDataset, placesDataset, on='City_id')
+print(userRatingsDataset.describe)
+
+# mean of the ratings per city
+ratings = pandas.DataFrame(userRatingsDataset.groupby('City_id')['Rating'].mean())
+ratings.head()
+
+# count of ratings per city
+ratings['number_of_ratings'] = df.groupby('City_id')['Rating'].count()
+ratings.head()
