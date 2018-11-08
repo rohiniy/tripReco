@@ -24,12 +24,18 @@ userRatingsDataset = pandas.read_csv(userRatingsUrl, names=userRatingsColumns)
 
 # merging places and user rating
 userRatingsDataset = pandas.merge(userRatingsDataset, placesDataset, on='City_id')
-print(userRatingsDataset.describe)
 
 # mean of the ratings per city
-ratings = pandas.DataFrame(userRatingsDataset.groupby('City_id')['Rating'].mean())
-ratings.head()
+ratings = pandas.DataFrame(userRatingsDataset.groupby('City')['Rating'].mean())
+#print(ratings)
 
 # count of ratings per city
-ratings['number_of_ratings'] = df.groupby('City_id')['Rating'].count()
-ratings.head()
+ratings['number_of_ratings'] = userRatingsDataset.groupby('City')['Rating'].count()
+#print(ratings)
+
+# creating matrix
+place_matrix = userRatingsDataset.pivot_table(index='User_id', columns='City', values='Rating')
+#print(place_matrix)
+
+# most rated
+print(ratings.sort_values('number_of_ratings', ascending=False).head(10))
