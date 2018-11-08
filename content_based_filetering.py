@@ -17,16 +17,10 @@ userRatingsUrl = "./user_place_rating.csv"
 userRatingsColumns = ['User_id', 'City_id', 'Rating']
 userRatingsDataset = pandas.read_csv(userRatingsUrl, names=userRatingsColumns)
 
-#get matrix of places with CountVectorizer
-count = CountVectorizer(stop_words='english')
-count_matrix = count.fit_transform(placesDataset)
-#print(count_matrix)
-
-
 # get matrix of places with tfId
 tf = TfidfVectorizer(analyzer='word',ngram_range=(1, 2),min_df=0, stop_words='english')
 tfidf_matrix = tf.fit_transform(placesDataset['Type'])
-#print(tfidf_matrix)
+print(tfidf_matrix)
 
 # get similarity between places based on the type
 cosine_sim = linear_kernel(tfidf_matrix, tfidf_matrix)
@@ -48,4 +42,3 @@ def get_city_recommendations(city):
 
 recommendationArray = get_city_recommendations('Detroit')
 print('Recommendations::', recommendationArray)
-
