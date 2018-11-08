@@ -8,7 +8,7 @@ from sklearn.metrics.pairwise import linear_kernel
 numpy.seterr(divide='ignore', invalid='ignore')
 
 # get places data set
-placesUrl = "./places.csv"
+placesUrl = "./placesWithSpace.csv"
 placesColumns = ['City_id', 'City', 'Type']
 placesDataset = pandas.read_csv(placesUrl, names=placesColumns)
 
@@ -17,13 +17,19 @@ userRatingsUrl = "./user_place_rating.csv"
 userRatingsColumns = ['User_id', 'City_id', 'Rating']
 userRatingsDataset = pandas.read_csv(userRatingsUrl, names=userRatingsColumns)
 
+#get matrix of places with CountVectorizer
+count = CountVectorizer(stop_words='english')
+count_matrix = count.fit_transform(placesDataset['Type'])
+print(count_matrix)
+
+
 # get matrix of places with tfId
 tf = TfidfVectorizer(analyzer='word',ngram_range=(1, 2),min_df=0, stop_words='english')
 tfidf_matrix = tf.fit_transform(placesDataset['Type'])
-print(tfidf_matrix)
+#print(tfidf_matrix)
 
 # get similarity between places based on the type
-cosine_sim = linear_kernel(tfidf_matrix, tfidf_matrix)
+cosine_sim = linear_kernel(count_matrix, count_matrix)
 #print(cosine_sim)
 
 # build a 1-dimensional array with City names
@@ -40,5 +46,5 @@ def get_city_recommendations(city):
   city_indices = [i[0] for i in sim_scores]
   return citiesArray.iloc[city_indices]
 
-recommendationArray = get_city_recommendations('Detroit')
+recommendationArray = get_city_recommendations('Las Vegas')
 print('Recommendations::', recommendationArray)

@@ -13,13 +13,13 @@
 13,Seattle,breweries  landmarks  420-friendly  dining  day-trips  nightlife  shopping
 14,Minneapolis,museum  hiking  entertainment  waterfalls  child-friendly  shopping  nightlife
 15,Baltimore,cruises  museums  shopping  historic  day-trips
-16,Oakland,hikes  museums  child-friendly  day-trips  entertainment
+16,Oakland,hiking  museums  child-friendly  day-trips  entertainment
 17,New Haven,museum  beach  day-trips
 18,Sunnyvale,dining  child-friendly
 19,Santa Clara,sports  museums  child-friendly  dining
 20,Buffalo,architecture  historic  museum  kid-friendly  day-trip
 21,Milwaukee,museum  brewery  entertainment  child-friendly  breweries
-22,Honolulu,hikes  adventure  national-park  beaches  museum  historic  entertainment  child-friendly  nightlife
+22,Honolulu,hiking  adventure  national-park  beaches  museum  historic  entertainment  child-friendly  nightlife
 23,San Jose,museum  nightlife  breweries  dinning  day-trips
 24,Hollywood,beach
 25,Pittsburgh,sports  museums  child-friendly  dining  historic  
@@ -27,8 +27,8 @@
 27,Cleveland,museum  entertainment  shopping  sports  nightlife  historic  child-friendly  dining
 28,Detroit,historic
 29,Springfield,museums  historic  child-friendly
-30,Portland,dining  hikes  420-friendly  public-transport-friendly  shopping  entertainment
-31,Las Vegas,nightlife  casino  national-park  adventures  420-friendly  breweries
+30,Portland,dining  hiking  420-friendly  public-transport-friendly  shopping  entertainment
+31,Las Vegas,nightlife  casino  national-park  adventure  420-friendly  breweries
 32,Tempe,beach  museum  child-friendly
 33,Denver,nightlife  breweries  420-friendly  entertainment  hiking  adventure
 34,Boulder,hiking  adventure
