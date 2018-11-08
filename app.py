@@ -37,5 +37,8 @@ ratings['number_of_ratings'] = userRatingsDataset.groupby('City')['Rating'].coun
 place_matrix = userRatingsDataset.pivot_table(index='User_id', columns='City', values='Rating')
 #print(place_matrix)
 
-# most rated
-print(ratings.sort_values('number_of_ratings', ascending=False).head(10))
+#finding places with similar ratings
+new_york_user_rating = place_matrix['New York']
+print(new_york_user_rating)
+similar_to_new_york = place_matrix.corrwith(new_york_user_rating)
+print(similar_to_new_york.head())
