@@ -47,4 +47,4 @@ new_york_user_rating = place_matrix['New York']
 similar_to_new_york = place_matrix.corrwith(new_york_user_rating)
 corr_new_york = pandas.DataFrame(similar_to_new_york, columns=['Correlation'])
 corr_new_york = corr_new_york.join(ratings['number_of_ratings'])
-#print(corr_new_york[corr_new_york['number_of_ratings'] > 1].sort_values(by='Correlation', ascending=False))
+print(corr_new_york[corr_new_york['number_of_ratings'] > 1].sort_values(by='Correlation', ascending=False))
