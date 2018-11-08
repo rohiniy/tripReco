@@ -11,6 +11,11 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
 from sklearn.naive_bayes import GaussianNB
 from sklearn.svm import SVC
+import numpy
+import warnings
+
+#ignoring warnings
+numpy.seterr(divide='ignore', invalid='ignore')
 
 # get places data set
 placesUrl = "./places.csv"
@@ -37,8 +42,9 @@ ratings['number_of_ratings'] = userRatingsDataset.groupby('City')['Rating'].coun
 place_matrix = userRatingsDataset.pivot_table(index='User_id', columns='City', values='Rating')
 #print(place_matrix)
 
-#finding places with similar ratings
+# simple item based recommender system for New York
 new_york_user_rating = place_matrix['New York']
-print(new_york_user_rating)
 similar_to_new_york = place_matrix.corrwith(new_york_user_rating)
-print(similar_to_new_york.head())
+corr_new_york = pandas.DataFrame(similar_to_new_york, columns=['Correlation'])
+corr_new_york = corr_new_york.join(ratings['number_of_ratings'])
+#print(corr_new_york[corr_new_york['number_of_ratings'] > 1].sort_values(by='Correlation', ascending=False))
