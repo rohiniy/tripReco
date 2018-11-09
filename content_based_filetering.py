@@ -56,7 +56,8 @@ def get_city_recommendations(city):
   typeSimScoresRatingCorrDataset = typeSimScoresRatingCorrDataset.sort_values(by=[1, 'Correlation'], ascending=[False, False])
   return typeSimScoresRatingCorrDataset[['City', 'City_id']]
 
-recommendations = get_city_recommendations('New York')
-print('#### Recommendations ###')
-#print(recommendations.head(10))
-print('#### Recommendations ###')
+city = 'New York'
+recommendations = get_city_recommendations(city)
+print('---- Content based recommendation based on user ratings and item similarity for city = '+ city + '-----')
+print(recommendations.head(10))
+print('----- Content based recommendation End ----- ')

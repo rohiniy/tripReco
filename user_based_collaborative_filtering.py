@@ -38,8 +38,10 @@ def hybridRecommendation(userId, city):
         contentBasedRecommendations['City_id'].apply(
             lambda x: svd.predict(userId, placesDataset.loc[x]['City_id']).est)
     contentBasedRecommendations = contentBasedRecommendations.sort_values('est', ascending=False)
+    return contentBasedRecommendations.head(33)
 
-    print(contentBasedRecommendations)
-    return contentBasedRecommendations.head(10)
-
-hybridRecommendation(1, 'New York')
+userId = 3
+city = 'New York'
+print('---- Hybrid recommendation of the userId = '+ str(userId) + ' for city ' + city + ' ----')
+print(hybridRecommendation(userId, 'New York'))
+print('----- Hybrid recommendation end -----')
