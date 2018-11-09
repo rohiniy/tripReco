@@ -4,15 +4,13 @@ import Tkinter
 from user_based_collaborative_filtering import hybridRecommendation
 from content_based_filetering import get_city_recommendations
 from simple_item_recommender import simple_recommender
+from matrix_factorization_recommender import getRecommendedCities
 
 master = Tkinter.Tk()
 master.geometry('1028x1028')
 
 def on_configure(event):
-    # update scrollregion after starting 'mainloop'
-    # when all widgets are in canvas
     canvas.configure(scrollregion=canvas.bbox('all'))
-
 
 def show_entry_fields():
    userId = e2.get()
@@ -35,14 +33,13 @@ def show_entry_fields():
 
    Tkinter.Label(frame, text='--------------------------------------------------------------').grid(row=12, column=1)
    labelHybrid1 = Tkinter.Label(frame,
-                                text="City similar to: %s for User Id: %s according "
-                                     "to user based collaborative filtering and content based filtering"
-                                     % (city, userId)).grid(row=13, column=1)
+                                text="New cities for User Id: %s according to user's past ratings"
+                                     % userId).grid(row=13, column=1)
    labelHybrid2 = Tkinter.Label(frame,
                                  text="For an existing system and existing user (personalized content)").grid(row=14, column=1)
 
-   hybridRecommendations = hybridRecommendation(userId, city)
-   labelHybrid2 = Tkinter.Label(frame, text=hybridRecommendations.head(10)).grid(row=15, column=1)
+   collaborativeRecommendations = getRecommendedCities(userId)
+   labelHybrid2 = Tkinter.Label(frame, text=collaborativeRecommendations.head(10)).grid(row=15, column=1)
 
 
 canvas = Tkinter.Canvas(master, width=1028, height=1028, scrollregion=(0,0,1500,1500))
