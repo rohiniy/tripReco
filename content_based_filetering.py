@@ -44,18 +44,7 @@ def get_city_recommendations(city):
   simScores = sorted(simScores, key=lambda x: x[1], reverse=True)
   simScores = simScores[1:34]
 
-  # simple item based recommender system for city
-  #city_user_rating = place_matrix[city]
-  #similar_to_city = place_matrix.corrwith(city_user_rating)
-  #corrCity = pandas.DataFrame(similar_to_city, columns=['Correlation'])
-  #corrCity = pandas.merge(corrCity, placesDataset, on='City')
-  #print(corrCity)
-  #return corrCity
-
   simScoresDataFrame = pandas.DataFrame(simScores)
   simScoresDataFrame[0] = simScoresDataFrame[0].apply(lambda x: x + 1)
   simScoresWithCityDataFrame = pandas.merge(simScoresDataFrame, placesDataset, right_on='City_id', left_on=0)
   return simScoresWithCityDataFrame[['City', 'City_id']]
-  # typeSimScoresRatingCorrDataset = pandas.merge(corrCity, simScoresDataFrame, left_on='City_id', right_on=0)
-  # typeSimScoresRatingCorrDataset = typeSimScoresRatingCorrDataset.sort_values(by=[1, 'Correlation'], ascending=[False, False])
-  # return typeSimScoresRatingCorrDataset[['City', 'City_id']]
