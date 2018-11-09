@@ -54,8 +54,9 @@ def get_city_recommendations(city):
   simScoresDataFrame[0] = simScoresDataFrame[0].apply(lambda x: x + 1)
   typeSimScoresRatingCorrDataset = pandas.merge(corrCity, simScoresDataFrame, left_on='City_id', right_on=0)
   typeSimScoresRatingCorrDataset = typeSimScoresRatingCorrDataset.sort_values(by=[1, 'Correlation'], ascending=[False, False])
-  return typeSimScoresRatingCorrDataset['City']
-
+  return typeSimScoresRatingCorrDataset[['City', 'City_id']]
 
 recommendations = get_city_recommendations('New York')
-print('Recommendations::', recommendations.head(10))
+print('#### Recommendations ###')
+#print(recommendations.head(10))
+print('#### Recommendations ###')
