@@ -8,6 +8,7 @@ from matrix_factorization_recommender import getRecommendedCities
 
 master = Tkinter.Tk()
 master.geometry('1028x1028')
+master.title('Trip Recommender')
 
 def on_configure(event):
     canvas.configure(scrollregion=canvas.bbox('all'))
