@@ -9,16 +9,14 @@ def show_entry_fields():
    print("City similar to: %s\n for User Id: %s" % (e1.get(), e2.get()))
    hybridRecommendations = hybridRecommendation(e2.get(), e1.get())
    print(hybridRecommendations)
-   label1 = Tkinter.Label(master, text= "City similar to: %s\n for User Id: %s" % (e1.get(), e2.get()))
-   label1.pack()
+   label1 = Tkinter.Label(master,
+            text= "City similar to: %s\n for User Id: %s" % (e1.get(), e2.get())).grid(row=5)
+   label2 = Tkinter.Label(master, text= hybridRecommendations).grid(row=5)
 
-   label2 = Tkinter.Label(master, text= hybridRecommendations)
-   label2.pack()
-
-master.geometry('500x500')
-frame = Tkinter.Frame(master, bg='grey')
-frame.pack_propagate(0)
-frame.pack(fill=Tkinter.BOTH, expand=1)
+master.geometry('1028x720')
+#frame = Tkinter.Frame(master, bg='grey')
+#frame.pack_propagate(0)
+#frame.pack(fill=Tkinter.BOTH, expand=1)
 Tkinter.Label(master, text="Search City like").grid(row=0)
 Tkinter.Label(master, text="User Id").grid(row=1)
 
