@@ -30,18 +30,17 @@ svd = SVD()
 trainset = data.build_full_trainset()
 svd.fit(trainset)
 
+def printAndPredict(x, userId):
+    print(x)
+    print(userId)
+    print svd.predict(x, userId)
+    return svd.predict(userId, x).est
+
 def hybridRecommendation(userId, city):
     #cityIndex = placesDataset.loc[placesDataset['City'] == city, 'City_id']
     contentBasedRecommendations = get_city_recommendations(city)
-    #print(contentBasedRecommendations)
     contentBasedRecommendations['est'] = \
         contentBasedRecommendations['City_id'].apply(
-            lambda x: svd.predict(userId, placesDataset.loc[x]['City_id']).est)
+            lambda x: printAndPredict(x, userId))
     contentBasedRecommendations = contentBasedRecommendations.sort_values('est', ascending=False)
-    return contentBasedRecommendations.head(33)
-
-userId = 3
-city = 'New York'
-print('---- Hybrid recommendation of the userId = '+ str(userId) + ' for city ' + city + ' ----')
-print(hybridRecommendation(userId, 'New York'))
-print('----- Hybrid recommendation end -----')
+    return contentBasedRecommendations
